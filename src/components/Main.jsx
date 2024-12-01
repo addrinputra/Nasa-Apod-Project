@@ -1,11 +1,20 @@
+import PropTypes from 'prop-types'
+
 
 export default function Main(props) {
-  // const {data} = props
+  const {data} = props
 
   return (
     <div className="imgContainer">
-      {/* <img src={data.hdurl} alt={data.title || 'bg-img'} className="bgImage" /> */}
-      <img src="mars.png" alt="mars" className="bgImage" />
+      <img src={data.hdurl} alt={data.title || 'bg-img'} className="bgImage" />
     </div>
   )
+}
+
+
+Main.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    hdurl: PropTypes.string,
+  }).isRequired
 }
