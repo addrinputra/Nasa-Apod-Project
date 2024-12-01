@@ -2,16 +2,16 @@ import PropTypes from 'prop-types'
 
 
 export default function SideBar(props) {
-  const {handleToggleModal} = props;
+  const {handleToggleModal, data} = props;
 
   return (
     <div className="sidebar">
       <div onClick={handleToggleModal} className="bgOverlay"></div>
       <div className="sidebarContents">
-        <h2>The Brutal Martian Landscape</h2>
-        <div>
-          <p>Description</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde non vitae eos, aut doloribus aperiam tenetur animi rerum neque temporibus?</p>
+        <h2>{data?.title}</h2>
+        <div className='descriptionContainer'>
+          <p className='descriptionTitle'>{data?.date}</p>
+          <p>{data?.explanation}</p>
         </div>
         <button onClick={handleToggleModal}>
           <i className="fa-solid fa-arrow-right"></i>
@@ -23,4 +23,9 @@ export default function SideBar(props) {
 
 SideBar.propTypes = {
   handleToggleModal: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    explanation: PropTypes.string,
+    date: PropTypes.string,
+  }).isRequired
 }
